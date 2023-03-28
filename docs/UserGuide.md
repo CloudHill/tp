@@ -69,78 +69,143 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 Shows a message explaning how to access the help page.
 
-![help message](images/helpMessage.png)
+**Format**
 
-Format: `help`
+```
+help
+```
+
+![help message](images/helpMessage.png)
 
 ### Adding a customer : `addc`
 
 Adds a customer to the current list.
 
-Format: `addc [ct/{ind/ent}] n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS`
+**Format**
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Customers are 'Individiuals' by default!
-ind - Individuals
-ent - Enterprise
+```
+addc [ct/{ind/ent}] n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS
+```
+
+| Parameter      | Description                                                                                          |
+|----------------|------------------------------------------------------------------------------------------------------|
+| `INDEX`        | A positive integer (1, 2, 3, ...)<br>Refers to the index number shown in the displayed customer list |
+| `ct/TYPE`      | `ind` - Individual<br>`ent` - Enterprise<br>Customers are 'Individuals' by default                   |
+| `n/NAME`       | Alphanumeric characters and spaces                                                                   |
+| `p/PHONE`      | A sequence of numbers (at least 3 digits)                                                            |
+| `e/EMAIL`      | Of the format `local-part@domain`                                                                    |
+| `a/ADDRESS`    | Any value                                                                                            |
+
+<div markdown="block" class="alert alert-secondary">
+
+**:keyboard: Examples:**<br>
+
+* `addc ct/ind n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`<br>
+  Add an individual customer named "John Doe"
+
+* `addc ct/ent n/The Potato Farm e/thepotatofarm@example.com a/South street, block 983, #02-01 p/1234567`<br>
+  Add an enterprise customer named "The Potato Farm"
+
+* `addc n/Mary Jane p/93130151 e/maryjane@example.com a/Mary Lamb Street, block 23, #01-12`<br>
+  Add an individual customer named "Mary Jane"
+
 </div>
-
-Examples:
-* `addc ct/ind n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `addc ct/ent n/The Potato Farm e/thepotatofarm@example.com a/South street, block 983, #02-01 p/1234567`
-* `addc n/Mary Jane p/93130151 e/maryjane@example.com a/Mary Lamb Street, block 23, #01-12`
 
 ### Listing all customers : `listc`
 
 Shows a list of all customers.
 
-Format: `listc [s/{name|points}]`
+**Format**
 
-* Lists all customer with the specified sorting option.
-* Be default, customers are sorted by name
+```
+listc [s/{name|points}]
+```
 
-Examples:
-* `listc` lists all customers sorted by name
-* `listc s/points` lists all customers sorted by points
+| Parameter      | Description                                                                                          |
+|----------------|------------------------------------------------------------------------------------------------------|
+| `INDEX`        | A positive integer (1, 2, 3, ...)<br>Refers to the index number shown in the displayed customer list |
+| `s/SORT`       | `name` `points`<br>By default, customers are sorted by name                                          |
+
+<div markdown="block" class="alert alert-secondary">
+
+**:keyboard: Examples:**<br>
+
+* `listc`<br>
+  Lists all customers sorted by name
+
+* `listc s/points`<br>
+  Lists all customers sorted by points
+
+</div>
 
 ### View a customer : `viewc`
 
-Display a customer's information in the information panel.
+Display a customer’s information in the information panel.
 
-Format: `viewc INDEX`
+**Format**
+
+```
+viewc INDEX
+```
 
 * Displays the customer's information at the specified `INDEX`.
-* * The index refers to the index number shown in the displayed customer list.
-* The index **must be a positive integer** 1, 2, 3, …​
+
+| Parameter      | Description                                                                                          |
+|----------------|------------------------------------------------------------------------------------------------------|
+| `INDEX`        | A positive integer (1, 2, 3, ...)<br>Refers to the index number shown in the displayed customer list |
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 You can click on the customer in the table directly for the same effect!
 </div>
 
-Examples:
-* `listc` and `viewc 2` opens `Bernice Yu` on the information panel on the right
+<div markdown="block" class="alert alert-secondary">
+
+**:keyboard: Examples:**<br>
+
+* `listc` followed by `viewc 2`<br>
+  Opens `Bernice Yu` on the information panel on the right
   ![result for 'viewc 2'](images/viewcBerniceYuResult.png)
 
+</div>
 
 ### Deleting a customer : `deletec`
 
 Delete a customer from the list.
 
-Format: `deletec INDEX`
+**Format**
+
+```
+deletec INDEX
+```
 
 * Deletes the customer at the specified `INDEX`.
-* The index refers to the index number shown in the displayed customer list.
-* The index **must be a positive integer** 1, 2, 3, …​
 
-Examples:
-* `listc` followed by `deletec 2` deletes the 2nd person in the address book.
-* `findc Betsy` followed by `deletec 1` deletes the 1st person in the results of the `findc` command.
+| Parameter      | Description                                                                                          |
+|----------------|------------------------------------------------------------------------------------------------------|
+| `INDEX`        | A positive integer (1, 2, 3, ...)<br>Refers to the index number shown in the displayed customer list |
+
+
+<div markdown="block" class="alert alert-secondary">
+
+**:keyboard: Examples:**<br>
+
+* `listc` followed by `deletec 2`<br>
+  Deletes the 2nd person in the address book.
+
+* `findc Betsy` followed by `deletec 1`<br>
+  Deletes the 1st person in the results of the `findc` command.
+
+</div>
 
 ### Marking a person: `markc`
 
 Bookmarks a customer from the list of customers.
 
-Format: `markc INDEX`
+**Format**
+
+```
+markc INDEX
+```
 
 * Bookmarks the customer at the specified `INDEX`.
 * The index refers to the index number shown in the displayed customer list.
@@ -154,7 +219,11 @@ Examples:
 
 Un-bookmarks a customer from the list of customers.
 
-Format: `unmarkc INDEX`
+**Format**
+
+```
+unmarkc INDEX
+```
 
 * Un-bookmarks the customer at the specified `INDEX`.
 * The index refers to the index number shown in the displayed customer list.
@@ -168,7 +237,11 @@ Examples:
 
 Sets a customer's reward points.
 
-Format: `setpoints INDEX pt/POINTS`
+**Format**
+
+```
+setpoints INDEX pt/POINTS
+```
 
 * Sets the points of the customer at the specified `INDEX` to `POINTS`.
 * Customers by default, have 0 points initially.
@@ -188,7 +261,11 @@ Examples:
 
 Edits a customer's reward points by adding or removing from it.
 
-Format: `addpoints INDEX pt/[+/-]POINTS`
+**Format**
+
+```
+addpoints INDEX pt/[+/-]POINTS
+```
 
 * Add or subtract the points of the customer at the specified `INDEX` to `POINTS`.
 * If the points subtracted is greater than what the user has, the command will not be executed
@@ -209,7 +286,11 @@ the 1st customer in the results of the `findc` command.
 
 Sets a tier for your reward system with a point threshold. Customers above the point threshold are automatically in this tier, and the tiers below it.
 
-Format: `settier TIER_NUM POINT_THRESHOLD`
+**Format**
+
+```
+settier TIER_NUM POINT_THRESHOLD
+```
 
 * There are 3 tiers by default, tiers 1, 2 and 3 will be initially set to 999997 999998 and 999999 respectively.
 * The points threshold of tiers must go in the following order, 1 < 2 < 3
@@ -228,45 +309,89 @@ than tier 2.
 
 Edits an existing customer in the address book.
 
-Format: `editc INDEX [ct/{ind|env}] [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]`
+**Format**
 
-* Edits the customer at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+```
+editc INDEX [ct/{ind|ent}] [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]
+```
+
+* Edits the customer at the specified `INDEX`.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 
-Examples:
-*  `editc 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `editc 2 ct/ind n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+| Parameter      | Description                                                                                          |
+|----------------|------------------------------------------------------------------------------------------------------|
+| `INDEX`        | A positive integer (1, 2, 3, ...)<br>Refers to the index number shown in the displayed customer list |
+| `ct/TYPE`      | `ind` - Individual<br>`ent` - Enterprise                                                                                         |
+| `n/NAME`       | Alphanumeric characters and spaces                                                                   |
+| `p/PHONE`      | A sequence of numbers (at least 3 digits)                                                            |
+| `e/EMAIL`      | Of the format `local-part@domain`                                                                    |
+| `a/ADDRESS`    | Any value                                                                                            |
+
+<div markdown="block" class="alert alert-secondary">
+
+**:keyboard: Examples:**<br>
+
+* `editc 1 p/91234567 e/johndoe@example.com`<br>
+  Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+
+* `editc 2 ct/ind n/Betsy Crower t/`<br>
+  Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+
+</div>
+
 
 ### Setting a customer's note : `setnotec`
 
-Sets a customer's note.
+Sets a customer’s note.
 
-Format: `setnotec INDEX nt/NOTE`
+**Format**
+
+```
+setnotec INDEX nt/NOTE
+```
 
 * Sets the note of the customer at the specified `INDEX` to `NOTE`.
 * Customers, by default, have a blank note.
-* The index refers to the index number shown in the displayed customer list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* The note refers to the customer's new note.
 * Any existing note will be overwritten.
 * A customer's note can be removed by setting an empty note.
 
-Examples:
-* `listc` followed by `setnotec 2 nt/Very friendly!` sets the 2nd customer's note as "Very friendly!".
-* `listc` followed by `setnotec 2 nt/` removes the 2nd customer's note.
-* `findc Betsy` followed by `setnotec 1 nt/Vegetarian` sets the 1st customer's note as "Vegetarian" in the results of the `findc` command.
+| Parameter      | Description                                                                                          |
+|----------------|------------------------------------------------------------------------------------------------------|
+| `INDEX`        | A positive integer (1, 2, 3, ...)<br>Refers to the index number shown in the displayed customer list |
+| `nt/NOTE`      | Any value                                                                                            |
+
+<div markdown="block" class="alert alert-secondary">
+
+**:keyboard: Examples:**<br>
+
+* `listc` followed by `setnotec 2 nt/Very friendly!`<br>
+  Sets the 2nd customer's note as "Very friendly!".
+
+* `listc` followed by `setnotec 2 nt/`<br>
+  Removes the 2nd customer's note.
+
+* `findc Betsy` followed by `setnotec 1 nt/Vegetarian`<br>
+  Sets the 1st customer's note as "Vegetarian" in the results of the `findc` command.
+
+</div>
 
 ### Appending a customer's note : `appendnotec`
 
 Adds more text to a customer's note.
 
-Format: `appendnotec INDEX nt/NOTE`
+**Format**
+
+```
+appendnotec INDEX nt/NOTE
+```
 
 * Adds `NOTE` to any existing note of the customer at the specified `INDEX`.
-* The index refers to the index number shown in the displayed customer list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* The note refers to the new text that will be added to the end of the customer's existing note.
+
+| Parameter      | Description                                                                                          |
+|----------------|------------------------------------------------------------------------------------------------------|
+| `INDEX`        | A positive integer (1, 2, 3, ...)<br>Refers to the index number shown in the displayed customer list |
+| `nt/NOTE`      | Any value                                                                                            |
 
 Examples:
 * `listc` followed by `appendnotec 2 nt/Very friendly!` will add "Very friendly!" to the 2nd customer's existing note.
@@ -276,7 +401,11 @@ Examples:
 
 Finds persons whose names contain any of the given keywords.
 
-Format: `findc KEYWORD [MORE_KEYWORDS]`
+**Format**
+
+```
+findc KEYWORD [MORE_KEYWORDS]
+```
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
@@ -352,7 +481,7 @@ Format: `setnoteo INDEX nt/NOTE`
 
 Examples:
 * `listo` followed by `setnoteo 2 nt/Keep cool` sets the 2nd order's note as "Keep cool".
-* `listc` followed by `setnoteo 2 nt/` removes the 2nd order's note.
+* `listo` followed by `setnoteo 2 nt/` removes the 2nd order's note.
 * `findo Brownies` followed by `setnoteo 1 nt/Vegan-friendly` sets the 1st order's note as "Vegan-friendly" in the results of the `findo` command.
 
 ### Appending an order's note : `appendnoteo`
@@ -448,7 +577,7 @@ _Details coming soon ..._
 |            **List Customer** | `listc` <br>                                                                                                                                                                 |
 |            **Find Customer** | `findc KEYWORD [MORE_KEYWORDS]` <br> e.g., `findc Hans Bo`                                                                                                                   |
 |            **View Customer** | `viewc INDEX` <br> e.g. `viewc 2`                                                                                                                                            |
-|            **Edit Customer** | `editc INDEX [ct/{ind&#124;env}] [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]` <br> e.g. `editc 1 p/91234567 e/johndoe@example.com`                                              |
+|            **Edit Customer** | `editc INDEX [ct/{ind&#124;ent}] [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]` <br> e.g. `editc 1 p/91234567 e/johndoe@example.com`                                              |
 |          **Delete Customer** | `deletec INDEX`<br> e.g., `deletec 3`                                                                                                                                        |
 |            **Mark Customer** | `markc INDEX` <br> e.g., `markc 1`                                                                                                                                           |
 |          **Unmark Customer** | `unmarkc INDEX` <br> e.g., `unmarkc 1`                                                                                                                                       |                                                                                                                                      |
