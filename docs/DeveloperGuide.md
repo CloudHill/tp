@@ -868,7 +868,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `listc f/ind`<br>
       Expected: Only individual customers are shown in the list. Success message shown in the status message.
 
-   1. Test case: `listc s/points f/filtered`<br>
+   1. Test case: `listc s/points f/ind`<br>
       Expected: Only individual customers are shown in the list sorted by points. Success message shown in the status message.
 
    1. Other valid test cases to try: `listc s/x`, `listc f/y`, `listc s/x f/y`, `...`
